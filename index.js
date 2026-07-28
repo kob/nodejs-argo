@@ -1,3 +1,13 @@
+
+
+index.js
+· 文本
+
+
+
+// 加载 .env 文件中的环境变量（需在读取 process.env 之前调用）
+require('dotenv').config();
+
 const express = require("express");
 const app = express();
 const axios = require("axios");
@@ -6,9 +16,17 @@ const fs = require("fs");
 const path = require("path");
 const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
+
+// 将字符串转为布尔值，兼容 "true"/"false"/"1"/"0" 等写法
+function toBool(value, defaultValue = false) {
+  if (value === undefined || value === null || value === '') return defaultValue;
+  if (typeof value === 'boolean') return value;
+  return ['true', '1', 'yes', 'on'].includes(String(value).trim().toLowerCase());
+}
+
 const UPLOAD_URL = process.env.UPLOAD_URL || '';      // 节点或订阅自动上传地址,需填写部署Merge-sub项目后的首页地址,例如：https://merge.xxx.com
 const PROJECT_URL = process.env.PROJECT_URL || '';    // 需要上传订阅或保活时需填写项目分配的url,例如：https://google.com
-const AUTO_ACCESS = process.env.AUTO_ACCESS || false; // false关闭自动保活，true开启,需同时填写PROJECT_URL变量
+const AUTO_ACCESS = toBool(process.env.AUTO_ACCESS, false); // false关闭自动保活，true开启,需同时填写PROJECT_URL变量
 const FILE_PATH = process.env.FILE_PATH || '.tmp';   // 运行目录,sub节点文件保存目录
 const SUB_PATH = process.env.SUB_PATH || 'sub';       // 订阅路径
 const PORT = process.env.SERVER_PORT || process.env.PORT || 3000;        // http服务订阅端口
@@ -19,7 +37,7 @@ const NEZHA_KEY = process.env.NEZHA_KEY || '';              // 哪吒v1的NZ_CLI
 const ARGO_DOMAIN = process.env.ARGO_DOMAIN || '';          // 固定隧道域名,留空即启用临时隧道
 const ARGO_AUTH = process.env.ARGO_AUTH || '';              // 固定隧道密钥json或token,留空即启用临时隧道,json获取地址：https://json.zone.id
 const ARGO_PORT = process.env.ARGO_PORT || 8001;            // 固定隧道端口,使用token需在cloudflare后台设置和这里一致
-const CFIP = process.env.CFIP || 'saas.sin.fan';            // 节点优选域名或优选ip  
+const CFIP = process.env.CFIP || 'saas.sin.fan';            // 节点优选域名或优选ip
 const CFPORT = process.env.CFPORT || 443;                   // 节点优选域名或优选ip对应的端口
 const NAME = process.env.NAME || '';                        // 节点名称
 
@@ -69,17 +87,17 @@ function deleteNodes() {
     }
 
     const decoded = Buffer.from(fileContent, 'base64').toString('utf-8');
-    const nodes = decoded.split('\n').filter(line => 
+    const nodes = decoded.split('\n').filter(line =>
       /(vless|vmess|trojan|hysteria2|tuic):\/\//.test(line)
     );
 
     if (nodes.length === 0) return;
 
-    axios.post(`${UPLOAD_URL}/api/delete-nodes`, 
+    axios.post(`${UPLOAD_URL}/api/delete-nodes`,
       JSON.stringify({ nodes }),
       { headers: { 'Content-Type': 'application/json' } }
-    ).catch((error) => { 
-      return null; 
+    ).catch((error) => {
+      return null;
     });
     return null;
   } catch (err) {
@@ -136,13 +154,13 @@ function getSystemArchitecture() {
 
 // 下载对应系统架构的依赖文件
 function downloadFile(fileName, fileUrl, callback) {
-  const filePath = fileName; 
-  
+  const filePath = fileName;
+
   // 确保目录存在
   if (!fs.existsSync(FILE_PATH)) {
     fs.mkdirSync(FILE_PATH, { recursive: true });
   }
-  
+
   const writer = fs.createWriteStream(filePath);
 
   axios({
@@ -174,8 +192,8 @@ function downloadFile(fileName, fileUrl, callback) {
 }
 
 // 下载并运行依赖文件
-async function downloadFilesAndRun() {  
-  
+async function downloadFilesAndRun() {
+
   const architecture = getSystemArchitecture();
   const filesToDownload = getFilesForArchitecture(architecture);
 
@@ -248,9 +266,9 @@ tls: ${nezhatls}
 use_gitee_to_upgrade: false
 use_ipv6_country_code: false
 uuid: ${UUID}`;
-      
+
       fs.writeFileSync(path.join(FILE_PATH, 'config.yaml'), configYaml);
-      
+
       // 运行 v1
       const command = `nohup ${phpPath} -c "${FILE_PATH}/config.yaml" >/dev/null 2>&1 &`;
       try {
@@ -329,19 +347,19 @@ function getFilesForArchitecture(architecture) {
 
   if (NEZHA_SERVER && NEZHA_KEY) {
     if (NEZHA_PORT) {
-      const npmUrl = architecture === 'arm' 
+      const npmUrl = architecture === 'arm'
         ? "https://arm64.ssss.nyc.mn/agent"
         : "https://amd64.ssss.nyc.mn/agent";
-        baseFiles.unshift({ 
-          fileName: npmPath, 
-          fileUrl: npmUrl 
+        baseFiles.unshift({
+          fileName: npmPath,
+          fileUrl: npmUrl
         });
     } else {
-      const phpUrl = architecture === 'arm' 
-        ? "https://arm64.ssss.nyc.mn/v1" 
+      const phpUrl = architecture === 'arm'
+        ? "https://arm64.ssss.nyc.mn/v1"
         : "https://amd64.ssss.nyc.mn/v1";
-      baseFiles.unshift({ 
-        fileName: phpPath, 
+      baseFiles.unshift({
+        fileName: phpPath,
         fileUrl: phpUrl
       });
     }
@@ -363,7 +381,7 @@ function argoType() {
   tunnel: ${ARGO_AUTH.split('"')[11]}
   credentials-file: ${path.join(FILE_PATH, 'tunnel.json')}
   protocol: http2
-  
+
   ingress:
     - hostname: ${ARGO_DOMAIN}
       service: http://localhost:${ARGO_PORT}
@@ -498,7 +516,7 @@ async function uploadNodes() {
                 'Content-Type': 'application/json'
             }
         });
-        
+
         if (response && response.status === 200) {
             console.log('Subscription uploaded successfully');
             return response;
@@ -544,8 +562,8 @@ async function uploadNodes() {
 // 90s后删除相关文件
 function cleanFiles() {
   setTimeout(() => {
-    const filesToDelete = [bootLogPath, configPath, webPath, botPath];  
-    
+    const filesToDelete = [bootLogPath, configPath, webPath, botPath];
+
     if (NEZHA_PORT) {
       filesToDelete.push(npmPath);
     } else if (NEZHA_SERVER && NEZHA_KEY) {
