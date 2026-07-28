@@ -1,10 +1,3 @@
-
-
-index.js
-· 文本
-
-
-
 // 加载 .env 文件中的环境变量（需在读取 process.env 之前调用）
 require('dotenv').config();
 
