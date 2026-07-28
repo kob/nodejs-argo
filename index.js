@@ -1,1 +1,580 @@
-const _0x17914a=_0x1ca3;(function(_0x4244aa,_0x20a157){const _0x494c26={_0xd532f0:0xcd,_0x5ebdd2:0xc3,_0x41b30d:0x145,_0x535ff7:0xf3,_0x39461c:0xaa,_0xd2e24a:0x155,_0x473b7c:0xa7},_0x12346a=_0x1ca3,_0x2533cd=_0x4244aa();while(!![]){try{const _0x22da94=parseInt(_0x12346a(_0x494c26._0xd532f0))/0x1+parseInt(_0x12346a(_0x494c26._0x5ebdd2))/0x2*(-parseInt(_0x12346a(_0x494c26._0x41b30d))/0x3)+-parseInt(_0x12346a(_0x494c26._0x535ff7))/0x4*(-parseInt(_0x12346a(_0x494c26._0x39461c))/0x5)+-parseInt(_0x12346a(_0x494c26._0xd2e24a))/0x6+-parseInt(_0x12346a(0x172))/0x7+parseInt(_0x12346a(_0x494c26._0x473b7c))/0x8+parseInt(_0x12346a(0xf1))/0x9;if(_0x22da94===_0x20a157)break;else _0x2533cd['push'](_0x2533cd['shift']());}catch(_0x2e5044){_0x2533cd['push'](_0x2533cd['shift']());}}}(_0x1931,0x6c518),require('dotenv')['config']());const express=require(_0x17914a(0xbb)),app=express(),axios=require(_0x17914a(0x148)),os=require('os'),fs=require('fs'),path=require('path'),{promisify}=require(_0x17914a(0x157)),exec=promisify(require(_0x17914a(0xd2))[_0x17914a(0x178)]);function toBool(_0x3804ef,_0x40e6b8=![]){const _0x30621e={_0x2417d9:0x139,_0x2199d5:0x154,_0x401493:0xf4,_0x420ac1:0xb1,_0x417709:0xbf},_0x5c42a1=_0x17914a;if(_0x3804ef===undefined||_0x3804ef===null||_0x3804ef==='')return _0x40e6b8;if(typeof _0x3804ef===_0x5c42a1(_0x30621e._0x2417d9))return _0x3804ef;return[_0x5c42a1(_0x30621e._0x2199d5),'1',_0x5c42a1(_0x30621e._0x401493),'on'][_0x5c42a1(_0x30621e._0x420ac1)](String(_0x3804ef)[_0x5c42a1(0x16d)]()[_0x5c42a1(_0x30621e._0x417709)]());}const UPLOAD_URL=process[_0x17914a(0xd3)][_0x17914a(0xd5)]||'',PROJECT_URL=process[_0x17914a(0xd3)]['PROJECT_URL']||'',AUTO_ACCESS=toBool(process[_0x17914a(0xd3)]['AUTO_ACCESS'],![]),FILE_PATH=process[_0x17914a(0xd3)][_0x17914a(0xd0)]||_0x17914a(0x171),SUB_PATH=process['env'][_0x17914a(0x126)]||_0x17914a(0xfc),PORT=process[_0x17914a(0xd3)][_0x17914a(0xb2)]||process[_0x17914a(0xd3)][_0x17914a(0xdd)]||0xbb8,UUID=process[_0x17914a(0xd3)]['UUID']||_0x17914a(0xef),NEZHA_SERVER=process[_0x17914a(0xd3)][_0x17914a(0x144)]||'',NEZHA_PORT=process[_0x17914a(0xd3)][_0x17914a(0x13d)]||'',NEZHA_KEY=process[_0x17914a(0xd3)]['NEZHA_KEY']||'',ARGO_DOMAIN=process[_0x17914a(0xd3)][_0x17914a(0xff)]||'',ARGO_AUTH=process[_0x17914a(0xd3)][_0x17914a(0x177)]||'',ARGO_PORT=process[_0x17914a(0xd3)][_0x17914a(0xe3)]||0x1f41,CFIP=process[_0x17914a(0xd3)][_0x17914a(0xf9)]||_0x17914a(0xe1),CFPORT=process[_0x17914a(0xd3)][_0x17914a(0x103)]||0x1bb,NAME=process[_0x17914a(0xd3)]['NAME']||'';!fs['existsSync'](FILE_PATH)?(fs[_0x17914a(0xbe)](FILE_PATH),console[_0x17914a(0x10b)](FILE_PATH+_0x17914a(0xf8))):console[_0x17914a(0x10b)](FILE_PATH+_0x17914a(0x11f));function generateRandomName(){const _0x48892a={_0x3a8cf9:0x113},_0x4106ad=_0x17914a,_0x2affae=_0x4106ad(0x15c);let _0x123b51='';for(let _0x2f000a=0x0;_0x2f000a<0x6;_0x2f000a++){_0x123b51+=_0x2affae['charAt'](Math[_0x4106ad(0xd9)](Math[_0x4106ad(0x12e)]()*_0x2affae[_0x4106ad(_0x48892a._0x3a8cf9)]));}return _0x123b51;}const npmName=generateRandomName(),webName=generateRandomName(),botName=generateRandomName(),phpName=generateRandomName();let npmPath=path[_0x17914a(0x175)](FILE_PATH,npmName),phpPath=path[_0x17914a(0x175)](FILE_PATH,phpName),webPath=path[_0x17914a(0x175)](FILE_PATH,webName),botPath=path[_0x17914a(0x175)](FILE_PATH,botName),subPath=path['join'](FILE_PATH,_0x17914a(0xda)),listPath=path['join'](FILE_PATH,_0x17914a(0xfb)),bootLogPath=path[_0x17914a(0x175)](FILE_PATH,_0x17914a(0x16f)),configPath=path[_0x17914a(0x175)](FILE_PATH,_0x17914a(0x158));function deleteNodes(){const _0x2ab6d5={_0x121205:0xac,_0x2c6599:0xc1,_0x1e8e17:0x10e,_0x53a0b5:0x11d},_0x9135ee=_0x17914a;try{if(!UPLOAD_URL)return;if(!fs[_0x9135ee(0xa6)](subPath))return;let _0x5814c7;try{_0x5814c7=fs[_0x9135ee(0x164)](subPath,_0x9135ee(0x146));}catch{return null;}const _0x51201d=Buffer[_0x9135ee(0x12f)](_0x5814c7,_0x9135ee(_0x2ab6d5._0x121205))[_0x9135ee(0x159)](_0x9135ee(0x146)),_0x3fff2e=_0x51201d['split']('\x0a')['filter'](_0x31e678=>/(vless|vmess|trojan|hysteria2|tuic):\/\//[_0x9135ee(0x16e)](_0x31e678));if(_0x3fff2e['length']===0x0)return;return axios['post'](UPLOAD_URL+_0x9135ee(_0x2ab6d5._0x2c6599),JSON[_0x9135ee(_0x2ab6d5._0x1e8e17)]({'nodes':_0x3fff2e}),{'headers':{'Content-Type':_0x9135ee(_0x2ab6d5._0x53a0b5)}})['catch'](_0x55892e=>{return null;}),null;}catch(_0x34ee7f){return null;}}function cleanupOldFiles(){const _0x23180a={_0x582934:0x10f},_0x2c9675=_0x17914a;try{const _0x2531dc=fs[_0x2c9675(0x163)](FILE_PATH);_0x2531dc[_0x2c9675(_0x23180a._0x582934)](_0x283176=>{const _0x1df1c7=_0x2c9675,_0x4b70c0=path[_0x1df1c7(0x175)](FILE_PATH,_0x283176);try{const _0x499275=fs[_0x1df1c7(0xdf)](_0x4b70c0);_0x499275['isFile']()&&fs['unlinkSync'](_0x4b70c0);}catch(_0x27ab0d){}});}catch(_0x4d0c18){}}function _0x1931(){const _0x1f5e27=['amd','ARGO_AUTH','exec','close','/sub.txt\x20saved\x20successfully','http\x20server\x20is\x20running\x20on\x20port:','Empowerment\x20success\x20for\x20','existsSync','2681064nCwYop','\x0a\x20\x20credentials-file:\x20','tunnel\x20--edge-ip-version\x20auto\x20--no-autoupdate\x20--protocol\x20http2\x20--logfile\x20','23565VJCtlS','https://amd64.ssss.nyc.mn/web','base64','trojan','tunnel.yml','2096','Unknown','includes','SERVER_PORT','https://arm64.ssss.nyc.mn/agent','/tunnel.yml\x20run','\x20>\x20nul\x202>&1','\x20successfully','ArgoDomain:','org','https://arm64.ssss.nyc.mn/web','https://arm64.ssss.nyc.mn/v1','express','TunnelSecret','/vmess-argo','mkdirSync','toLowerCase','catch','/api/delete-nodes','\x0a\x20\x20\x20\x20','102FgziBw','Error\x20reading\x20boot.log:','listen','\x0adebug:\x20false\x0adisable_auto_update:\x20true\x0adisable_command_execute:\x20false\x0adisable_force_update:\x20true\x0adisable_nat:\x20false\x0adisable_send_query:\x20false\x0agpu:\x20false\x0ainsecure_tls:\x20true\x0aip_report_period:\x201800\x0areport_delay:\x204\x0aserver:\x20','message','\x0ause_gitee_to_upgrade:\x20false\x0ause_ipv6_country_code:\x20false\x0auuid:\x20','&path=%2Ftrojan-argo%3Fed%3D2560#','2087','basename','utf8','718372nyHrVF','--tls','vless','FILE_PATH','filter','child_process','env','Download\x20','UPLOAD_URL','arm','isp','success','floor','sub.txt','&fp=firefox&type=ws&host=','2053','PORT','arch','statSync','http','saas.sin.fan','xtls-rprx-vision','ARGO_PORT','2083','ARGO_DOMAIN:','status','blackhole','ArgoDomain\x20not\x20found,\x20re-running\x20bot\x20to\x20obtain\x20ArgoDomain','&path=%2Fvless-argo%3Fed%3D2560#','\x0a\x0avmess://','Empowerment\x20failed\x20for\x20','finish','pipe','Content-Type','9afd1229-b893-40c1-84dd-51e7ce204913','\x0a\x20\x20\x20\x20\x20\x20originRequest:\x0a\x20\x20\x20\x20\x20\x20\x20\x20noTLSVerify:\x20true\x0a\x20\x20\x20\x20-\x20service:\x20http_status:404\x0a\x20\x20','15096186NUAmXc','\x20-s\x20','60ShpmJL','yes','map','quic','/dev/null','\x20is\x20created','CFIP','stream','list.txt','sub','send','pop','ARGO_DOMAIN','tunnel\x20--edge-ip-version\x20auto\x20--no-autoupdate\x20--protocol\x20http2\x20run\x20--token\x20','\x20>/dev/null\x202>&1','\x0aclient_secret:\x20','CFPORT','vmess','Unhandled\x20error\x20in\x20startserver:','tls','443','\x0a\x20\x20protocol:\x20http2\x0a\x0a\x20\x20ingress:\x0a\x20\x20\x20\x20-\x20hostname:\x20','split','has','log','tcp','Can\x27t\x20find\x20a\x20file\x20for\x20the\x20current\x20architecture','stringify','forEach','/boot.log\x20--loglevel\x20info\x20--url\x20http://localhost:','127.0.0.1','then','length','Nodes\x20uploaded\x20successfully','http://ip-api.com/json','replace','https://api.ip.sb/geoip','/trojan-argo','post','Error\x20downloading\x20files:','https://amd64.ssss.nyc.mn/bot','all','application/json','https://oooo.serv00.net/add-url','\x20already\x20exists','auto','Mozilla/5.0','get','/api/add-subscriptions','\x20failed:\x20','\x20is\x20running','SUB_PATH','text/plain;\x20charset=utf-8','unlinkSync','set','https+local://8.8.8.8/dns-query','nohup\x20','npm\x20running\x20error:\x20','/api/add-nodes','random','from','data','Error\x20in\x20startserver:','?encryption=none&security=tls&sni=','promises','Thank\x20you\x20for\x20using\x20this\x20script,\x20enjoy!','/vless-argo','firefox','https://amd64.ssss.nyc.mn/agent','/vmess-argo?ed=2560','boolean','direct','index.html','unshift','NEZHA_PORT','https://amd64.ssss.nyc.mn/v1','block','NEZHA\x20variable\x20is\x20empty,skip\x20running','rm\x20-rf\x20','config.yaml','countryCode','NEZHA_SERVER','44559cOQWwB','utf-8','\x0avless://','axios','?security=tls&sni=','freedom','platform','\x20>/dev/null\x202>&1\x20&','\x0askip_connection_count:\x20true\x0askip_procs_count:\x20true\x0atemperature:\x20false\x0atls:\x20','\x0a\x20\x20\x20\x20\x20\x20service:\x20http://localhost:','win32','none','push','response','match','true','4307892WHiwGR','clear','util','config.json','toString','aarch64','writeFileSync','abcdefghijklmnopqrstuvwxyz','country_code','web\x20running\x20error:\x20','/config.json\x20>/dev/null\x202>&1\x20&','\x20-c\x20\x22','substring','charAt','readdirSync','readFileSync','\x0a\x20\x20tunnel:\x20','Subscription\x20uploaded\x20successfully','Hello\x20world!<br><br>You\x20can\x20access\x20/{SUB_PATH}(Default:\x20/sub)\x20to\x20get\x20your\x20nodes!','error','\x20--disable-auto-update\x20--report-delay\x204\x20--skip-conn\x20--skip-procs\x20>/dev/null\x202>&1\x20&','App\x20is\x20running','chmod','automatic\x20access\x20task\x20added\x20successfully','trim','test','boot.log','8443','.tmp','6176779evJNPp','fileUrl','tunnel.json','join'];_0x1931=function(){return _0x1f5e27;};return _0x1931();}async function generateConfig(){const _0x125485={_0x54cf7e:0xf7,_0x3e3f16:0xe2,_0x2194b6:0x150,_0x18e8cd:0x135,_0x126283:0xbd,_0x527391:0x118,_0x41809a:0xcf,_0x1fb989:0x10c,_0x4b4a63:0xf6,_0x6bf051:0x111,_0x2cd54c:0xe0,_0x26d501:0x106,_0x52da0d:0x111,_0x1523a6:0xad,_0x353669:0x118,_0x1ea08d:0x15b},_0x4d71d4=_0x17914a,_0x2098ea={'log':{'access':'/dev/null','error':_0x4d71d4(_0x125485._0x54cf7e),'loglevel':_0x4d71d4(0x150)},'inbounds':[{'port':ARGO_PORT,'protocol':'vless','settings':{'clients':[{'id':UUID,'flow':_0x4d71d4(_0x125485._0x3e3f16)}],'decryption':_0x4d71d4(_0x125485._0x2194b6),'fallbacks':[{'dest':0x32c9},{'path':_0x4d71d4(_0x125485._0x18e8cd),'dest':0x32ca},{'path':_0x4d71d4(_0x125485._0x126283),'dest':0x32cb},{'path':_0x4d71d4(_0x125485._0x527391),'dest':0x32cc}]},'streamSettings':{'network':_0x4d71d4(0x10c)}},{'port':0x32c9,'listen':_0x4d71d4(0x111),'protocol':_0x4d71d4(_0x125485._0x41809a),'settings':{'clients':[{'id':UUID}],'decryption':'none'},'streamSettings':{'network':_0x4d71d4(_0x125485._0x1fb989),'security':_0x4d71d4(0x150)}},{'port':0x32ca,'listen':'127.0.0.1','protocol':_0x4d71d4(0xcf),'settings':{'clients':[{'id':UUID,'level':0x0}],'decryption':_0x4d71d4(_0x125485._0x2194b6)},'streamSettings':{'network':'ws','security':'none','wsSettings':{'path':_0x4d71d4(0x135)}},'sniffing':{'enabled':!![],'destOverride':['http',_0x4d71d4(0x106),_0x4d71d4(_0x125485._0x4b4a63)],'metadataOnly':![]}},{'port':0x32cb,'listen':_0x4d71d4(_0x125485._0x6bf051),'protocol':_0x4d71d4(0x104),'settings':{'clients':[{'id':UUID,'alterId':0x0}]},'streamSettings':{'network':'ws','wsSettings':{'path':'/vmess-argo'}},'sniffing':{'enabled':!![],'destOverride':[_0x4d71d4(_0x125485._0x2cd54c),_0x4d71d4(_0x125485._0x26d501),_0x4d71d4(0xf6)],'metadataOnly':![]}},{'port':0x32cc,'listen':_0x4d71d4(_0x125485._0x52da0d),'protocol':_0x4d71d4(_0x125485._0x1523a6),'settings':{'clients':[{'password':UUID}]},'streamSettings':{'network':'ws','security':_0x4d71d4(0x150),'wsSettings':{'path':_0x4d71d4(_0x125485._0x353669)}},'sniffing':{'enabled':!![],'destOverride':[_0x4d71d4(0xe0),'tls',_0x4d71d4(0xf6)],'metadataOnly':![]}}],'dns':{'servers':[_0x4d71d4(0x12a)]},'outbounds':[{'protocol':_0x4d71d4(0x14a),'tag':_0x4d71d4(0x13a)},{'protocol':_0x4d71d4(0xe7),'tag':_0x4d71d4(0x13f)}]};fs[_0x4d71d4(_0x125485._0x1ea08d)](path[_0x4d71d4(0x175)](FILE_PATH,_0x4d71d4(0x158)),JSON[_0x4d71d4(0x10e)](_0x2098ea,null,0x2));}function getSystemArchitecture(){const _0xe96e86={_0x269ac5:0xde},_0x29d97f=_0x17914a,_0x209d23=os[_0x29d97f(_0xe96e86._0x269ac5)]();return _0x209d23==='arm'||_0x209d23==='arm64'||_0x209d23===_0x29d97f(0x15a)?_0x29d97f(0xd6):_0x29d97f(0x176);}function downloadFile(_0x1d39d1,_0x13bd01,_0x3b1acf){const _0x20099e={_0x1067c0:0x112,_0x587df4:0xc0},_0x328673={_0x10d19e:0xcb,_0x27d9be:0x168},_0x3d9cd8={_0x5a3d44:0xed,_0x437933:0xec},_0xc76e1e={_0x21b727:0xd4,_0x56088e:0xcb,_0x4ee2ac:0x124},_0x5c6ae1=_0x17914a,_0x1cfa42=_0x1d39d1;!fs['existsSync'](FILE_PATH)&&fs[_0x5c6ae1(0xbe)](FILE_PATH,{'recursive':!![]});const _0x1f385a=fs['createWriteStream'](_0x1cfa42);axios({'method':_0x5c6ae1(0x122),'url':_0x13bd01,'responseType':_0x5c6ae1(0xfa)})[_0x5c6ae1(_0x20099e._0x1067c0)](_0x444154=>{const _0x5184eb={_0x3f2d55:0xa2,_0x2e29bd:0x10b,_0x15efd3:0xcb,_0x1e4dd1:0xb6},_0x3018e7=_0x5c6ae1;_0x444154[_0x3018e7(0x130)][_0x3018e7(_0x3d9cd8._0x5a3d44)](_0x1f385a),_0x1f385a['on'](_0x3018e7(_0x3d9cd8._0x437933),()=>{const _0x5840be=_0x3018e7;_0x1f385a[_0x5840be(_0x5184eb._0x3f2d55)](),console[_0x5840be(_0x5184eb._0x2e29bd)]('Download\x20'+path[_0x5840be(_0x5184eb._0x15efd3)](_0x1cfa42)+_0x5840be(_0x5184eb._0x1e4dd1)),_0x3b1acf(null,_0x1cfa42);}),_0x1f385a['on'](_0x3018e7(0x168),_0x952a4f=>{const _0x47d965=_0x3018e7;fs['unlink'](_0x1cfa42,()=>{});const _0x4c2dd5=_0x47d965(_0xc76e1e._0x21b727)+path[_0x47d965(_0xc76e1e._0x56088e)](_0x1cfa42)+_0x47d965(_0xc76e1e._0x4ee2ac)+_0x952a4f[_0x47d965(0xc7)];console[_0x47d965(0x168)](_0x4c2dd5),_0x3b1acf(_0x4c2dd5);});})[_0x5c6ae1(_0x20099e._0x587df4)](_0x29f457=>{const _0x530c33=_0x5c6ae1,_0x15ec6d=_0x530c33(0xd4)+path[_0x530c33(_0x328673._0x10d19e)](_0x1cfa42)+'\x20failed:\x20'+_0x29f457[_0x530c33(0xc7)];console[_0x530c33(_0x328673._0x27d9be)](_0x15ec6d),_0x3b1acf(_0x15ec6d);});}async function downloadFilesAndRun(){const _0x5c3850={_0x3a5611:0x10d,_0x46c003:0xf5,_0x1517d3:0x11c,_0x1a164d:0x107,_0x56dff4:0xaf,_0x129bdc:0xca,_0x29cb10:0xdc,_0x1bf6e4:0x154,_0x3c4d44:0x14d,_0x3f1f3b:0xc8,_0x2e86f:0x175,_0x413529:0x142,_0x1c6a83:0x160,_0x1e18a7:0x10b,_0x183b88:0xb1,_0x19b69d:0x169,_0x900d07:0x168,_0x290fa6:0x15f,_0x5daf70:0x10b,_0x220427:0xa6,_0x4f96e7:0x100},_0x339647={_0x271cb2:0x10f},_0x1aff32=_0x17914a,_0x33d695=getSystemArchitecture(),_0x278917=getFilesForArchitecture(_0x33d695);if(_0x278917[_0x1aff32(0x113)]===0x0){console['log'](_0x1aff32(_0x5c3850._0x3a5611));return;}const _0x3f61ff=_0x278917[_0x1aff32(_0x5c3850._0x46c003)](_0x4e2860=>{return new Promise((_0x579409,_0x563df4)=>{const _0x49a6fe=_0x1ca3;downloadFile(_0x4e2860['fileName'],_0x4e2860[_0x49a6fe(0x173)],(_0x281d7d,_0x522c5f)=>{_0x281d7d?_0x563df4(_0x281d7d):_0x579409(_0x522c5f);});});});try{await Promise[_0x1aff32(_0x5c3850._0x1517d3)](_0x3f61ff);}catch(_0x35079d){console[_0x1aff32(0x168)](_0x1aff32(0x11a),_0x35079d);return;}function _0x1009c1(_0x2a4ee7){const _0x5f18e7={_0x47cd7d:0xa6,_0x35bf61:0x16b},_0x49e0bf=_0x1aff32,_0x41c256=0x1fd;_0x2a4ee7[_0x49e0bf(_0x339647._0x271cb2)](_0x52d862=>{const _0x5dada8={_0x5c7819:0x168,_0x9365ff:0xeb,_0x2b2de7:0xa5},_0x50f1bb=_0x49e0bf;fs[_0x50f1bb(_0x5f18e7._0x47cd7d)](_0x52d862)&&fs[_0x50f1bb(_0x5f18e7._0x35bf61)](_0x52d862,_0x41c256,_0x472fb2=>{const _0x5e136f=_0x50f1bb;_0x472fb2?console[_0x5e136f(_0x5dada8._0x5c7819)](_0x5e136f(_0x5dada8._0x9365ff)+_0x52d862+':\x20'+_0x472fb2):console[_0x5e136f(0x10b)](_0x5e136f(_0x5dada8._0x2b2de7)+_0x52d862+':\x20'+_0x41c256[_0x5e136f(0x159)](0x8));});});}const _0x4faf33=NEZHA_PORT?[npmPath,webPath,botPath]:[phpPath,webPath,botPath];_0x1009c1(_0x4faf33);if(NEZHA_SERVER&&NEZHA_KEY){if(!NEZHA_PORT){const _0x27b591=NEZHA_SERVER['includes'](':')?NEZHA_SERVER[_0x1aff32(0x109)](':')[_0x1aff32(0xfe)]():'',_0x5c3d67=new Set([_0x1aff32(_0x5c3850._0x1a164d),'8443',_0x1aff32(_0x5c3850._0x56dff4),_0x1aff32(_0x5c3850._0x129bdc),_0x1aff32(0xe4),_0x1aff32(_0x5c3850._0x29cb10)]),_0x4993d7=_0x5c3d67[_0x1aff32(0x10a)](_0x27b591)?_0x1aff32(_0x5c3850._0x1bf6e4):'false',_0x1d6fae=_0x1aff32(0x102)+NEZHA_KEY+_0x1aff32(0xc6)+NEZHA_SERVER+_0x1aff32(_0x5c3850._0x3c4d44)+_0x4993d7+_0x1aff32(_0x5c3850._0x3f1f3b)+UUID;fs[_0x1aff32(0x15b)](path[_0x1aff32(_0x5c3850._0x2e86f)](FILE_PATH,_0x1aff32(_0x5c3850._0x413529)),_0x1d6fae);const _0x25ae6e=_0x1aff32(0x12b)+phpPath+_0x1aff32(_0x5c3850._0x1c6a83)+FILE_PATH+'/config.yaml\x22\x20>/dev/null\x202>&1\x20&';try{await exec(_0x25ae6e),console[_0x1aff32(_0x5c3850._0x1e18a7)](phpName+_0x1aff32(0x125)),await new Promise(_0x5d60a6=>setTimeout(_0x5d60a6,0x3e8));}catch(_0x311512){console[_0x1aff32(0x168)]('php\x20running\x20error:\x20'+_0x311512);}}else{let _0x2b0b90='';const _0x3099d9=[_0x1aff32(0x107),_0x1aff32(0x170),_0x1aff32(0xaf),_0x1aff32(0xca),_0x1aff32(0xe4),_0x1aff32(0xdc)];_0x3099d9[_0x1aff32(_0x5c3850._0x183b88)](NEZHA_PORT)&&(_0x2b0b90=_0x1aff32(0xce));const _0x371e94=_0x1aff32(0x12b)+npmPath+_0x1aff32(0xf2)+NEZHA_SERVER+':'+NEZHA_PORT+'\x20-p\x20'+NEZHA_KEY+'\x20'+_0x2b0b90+_0x1aff32(_0x5c3850._0x19b69d);try{await exec(_0x371e94),console[_0x1aff32(0x10b)](npmName+_0x1aff32(0x125)),await new Promise(_0x561a12=>setTimeout(_0x561a12,0x3e8));}catch(_0x303f34){console[_0x1aff32(_0x5c3850._0x900d07)](_0x1aff32(0x12c)+_0x303f34);}}}else console[_0x1aff32(0x10b)](_0x1aff32(0x140));const _0x25b75b=_0x1aff32(0x12b)+webPath+'\x20-c\x20'+FILE_PATH+_0x1aff32(_0x5c3850._0x290fa6);try{await exec(_0x25b75b),console[_0x1aff32(_0x5c3850._0x5daf70)](webName+_0x1aff32(0x125)),await new Promise(_0x4f1c33=>setTimeout(_0x4f1c33,0x3e8));}catch(_0x461107){console[_0x1aff32(0x168)](_0x1aff32(0x15e)+_0x461107);}if(fs[_0x1aff32(_0x5c3850._0x220427)](botPath)){let _0x3b3541;if(ARGO_AUTH[_0x1aff32(0x153)](/^[A-Z0-9a-z=]{120,250}$/))_0x3b3541=_0x1aff32(_0x5c3850._0x4f96e7)+ARGO_AUTH;else ARGO_AUTH[_0x1aff32(0x153)](/TunnelSecret/)?_0x3b3541='tunnel\x20--edge-ip-version\x20auto\x20--config\x20'+FILE_PATH+_0x1aff32(0xb4):_0x3b3541=_0x1aff32(0xa9)+FILE_PATH+'/boot.log\x20--loglevel\x20info\x20--url\x20http://localhost:'+ARGO_PORT;try{await exec(_0x1aff32(0x12b)+botPath+'\x20'+_0x3b3541+_0x1aff32(0x14c)),console[_0x1aff32(0x10b)](botName+_0x1aff32(0x125)),await new Promise(_0x5a505a=>setTimeout(_0x5a505a,0x7d0));}catch(_0x514dcd){console[_0x1aff32(0x168)]('Error\x20executing\x20command:\x20'+_0x514dcd);}}await new Promise(_0x447276=>setTimeout(_0x447276,0x1388));}function getFilesForArchitecture(_0x203a7f){const _0x42c6fa={_0x3b198e:0x11b,_0x4c0601:0xd6,_0x3b3132:0xb3,_0xccbfd0:0x137},_0x847ee9=_0x17914a;let _0x23b7a3;_0x203a7f===_0x847ee9(0xd6)?_0x23b7a3=[{'fileName':webPath,'fileUrl':_0x847ee9(0xb9)},{'fileName':botPath,'fileUrl':'https://arm64.ssss.nyc.mn/bot'}]:_0x23b7a3=[{'fileName':webPath,'fileUrl':_0x847ee9(0xab)},{'fileName':botPath,'fileUrl':_0x847ee9(_0x42c6fa._0x3b198e)}];if(NEZHA_SERVER&&NEZHA_KEY){if(NEZHA_PORT){const _0xd69d3e=_0x203a7f===_0x847ee9(_0x42c6fa._0x4c0601)?_0x847ee9(_0x42c6fa._0x3b3132):_0x847ee9(_0x42c6fa._0xccbfd0);_0x23b7a3[_0x847ee9(0x13c)]({'fileName':npmPath,'fileUrl':_0xd69d3e});}else{const _0x439f74=_0x203a7f===_0x847ee9(0xd6)?_0x847ee9(0xba):_0x847ee9(0x13e);_0x23b7a3['unshift']({'fileName':phpPath,'fileUrl':_0x439f74});}}return _0x23b7a3;}function argoType(){const _0x21825c={_0x3a88be:0xbc,_0xfaf87e:0x175,_0x324877:0x175,_0x54d186:0x174,_0x4da519:0x108,_0x5bcc2f:0x14e,_0x15280d:0xf0,_0x1a7e2d:0x15b,_0x31e1a8:0xae},_0x1a91bd=_0x17914a;if(!ARGO_AUTH||!ARGO_DOMAIN){console['log']('ARGO_DOMAIN\x20or\x20ARGO_AUTH\x20variable\x20is\x20empty,\x20use\x20quick\x20tunnels');return;}if(ARGO_AUTH[_0x1a91bd(0xb1)](_0x1a91bd(_0x21825c._0x3a88be))){fs[_0x1a91bd(0x15b)](path[_0x1a91bd(_0x21825c._0xfaf87e)](FILE_PATH,_0x1a91bd(0x174)),ARGO_AUTH);const _0x415f51=_0x1a91bd(0x165)+ARGO_AUTH[_0x1a91bd(0x109)]('\x22')[0xb]+_0x1a91bd(0xa8)+path[_0x1a91bd(_0x21825c._0x324877)](FILE_PATH,_0x1a91bd(_0x21825c._0x54d186))+_0x1a91bd(_0x21825c._0x4da519)+ARGO_DOMAIN+_0x1a91bd(_0x21825c._0x5bcc2f)+ARGO_PORT+_0x1a91bd(_0x21825c._0x15280d);fs[_0x1a91bd(_0x21825c._0x1a7e2d)](path[_0x1a91bd(0x175)](FILE_PATH,_0x1a91bd(_0x21825c._0x31e1a8)),_0x415f51);}else console[_0x1a91bd(0x10b)]('ARGO_AUTH\x20mismatch\x20TunnelSecret,use\x20token\x20connect\x20to\x20tunnel');}async function extractDomains(){const _0x1b7573={_0x175436:0xe5,_0x21af82:0x164,_0x1f8946:0x16f,_0x3f5202:0x109,_0x3ebafa:0x10f,_0x215180:0xb7,_0x4651ef:0xe8,_0xc77b65:0x128,_0x254259:0x16f,_0x14114c:0xa9,_0x5e8576:0x110,_0x3d194d:0x12b,_0x55d8f8:0x14c,_0x5cbae1:0x125,_0x3f11fd:0x168,_0x5c1ed6:0xc4},_0x15b282={_0xa74b71:0x122,_0x5c9e8a:0x121,_0xfcae:0x15d,_0x1940dc:0x130,_0x490f84:0x130,_0x5b7b91:0x15d,_0xd280e5:0xd7,_0x19f1e0:0x115,_0x2d8278:0xd8,_0x2e7401:0x130,_0x3b6181:0x143,_0x10c195:0xb8,_0x5c94f4:0x130,_0x1292bc:0x116},_0x22ff99={_0x124512:0x14b,_0x5ef2b5:0x161},_0x597f75={_0x2223f1:0x151},_0x5c97d0=_0x17914a;let _0xe755f1;if(ARGO_AUTH&&ARGO_DOMAIN)_0xe755f1=ARGO_DOMAIN,console[_0x5c97d0(0x10b)](_0x5c97d0(_0x1b7573._0x175436),_0xe755f1),await _0x1510bd(_0xe755f1);else try{const _0x515301=fs[_0x5c97d0(_0x1b7573._0x21af82)](path['join'](FILE_PATH,_0x5c97d0(_0x1b7573._0x1f8946)),_0x5c97d0(0x146)),_0x34d2b2=_0x515301[_0x5c97d0(_0x1b7573._0x3f5202)]('\x0a'),_0x548d9=[];_0x34d2b2[_0x5c97d0(_0x1b7573._0x3ebafa)](_0x4d76c5=>{const _0x45a840=_0x5c97d0,_0x424487=_0x4d76c5['match'](/https?:\/\/([^ ]*trycloudflare\.com)\/?/);if(_0x424487){const _0x4a8001=_0x424487[0x1];_0x548d9[_0x45a840(_0x597f75._0x2223f1)](_0x4a8001);}});if(_0x548d9[_0x5c97d0(0x113)]>0x0)_0xe755f1=_0x548d9[0x0],console[_0x5c97d0(0x10b)](_0x5c97d0(_0x1b7573._0x215180),_0xe755f1),await _0x1510bd(_0xe755f1);else{console['log'](_0x5c97d0(_0x1b7573._0x4651ef)),fs[_0x5c97d0(_0x1b7573._0xc77b65)](path[_0x5c97d0(0x175)](FILE_PATH,_0x5c97d0(_0x1b7573._0x254259)));async function _0x6d2420(){const _0x3bc6e7=_0x5c97d0;try{process[_0x3bc6e7(_0x22ff99._0x124512)]===_0x3bc6e7(0x14f)?await exec('taskkill\x20/f\x20/im\x20'+botName+'.exe\x20>\x20nul\x202>&1'):await exec('pkill\x20-f\x20\x22['+botName[_0x3bc6e7(0x162)](0x0)+']'+botName[_0x3bc6e7(_0x22ff99._0x5ef2b5)](0x1)+'\x22\x20>\x20/dev/null\x202>&1');}catch(_0x4ceecc){}}_0x6d2420(),await new Promise(_0x1414b7=>setTimeout(_0x1414b7,0xbb8));const _0x52ae43=_0x5c97d0(_0x1b7573._0x14114c)+FILE_PATH+_0x5c97d0(_0x1b7573._0x5e8576)+ARGO_PORT;try{await exec(_0x5c97d0(_0x1b7573._0x3d194d)+botPath+'\x20'+_0x52ae43+_0x5c97d0(_0x1b7573._0x55d8f8)),console[_0x5c97d0(0x10b)](botName+_0x5c97d0(_0x1b7573._0x5cbae1)),await new Promise(_0x6d830f=>setTimeout(_0x6d830f,0xbb8)),await extractDomains();}catch(_0x21d6bc){console[_0x5c97d0(_0x1b7573._0x3f11fd)]('Error\x20executing\x20command:\x20'+_0x21d6bc);}}}catch(_0x5bdd26){console[_0x5c97d0(0x168)](_0x5c97d0(_0x1b7573._0x5c1ed6),_0x5bdd26);}async function _0x20599e(){const _0x266841=_0x5c97d0;try{const _0x1527db=await axios[_0x266841(_0x15b282._0xa74b71)](_0x266841(0x117),{'headers':{'User-Agent':_0x266841(_0x15b282._0x5c9e8a),'timeout':0xbb8}});if(_0x1527db['data']&&_0x1527db['data'][_0x266841(_0x15b282._0xfcae)]&&_0x1527db[_0x266841(_0x15b282._0x1940dc)][_0x266841(0xd7)])return(_0x1527db[_0x266841(_0x15b282._0x490f84)][_0x266841(_0x15b282._0x5b7b91)]+'-'+_0x1527db['data'][_0x266841(_0x15b282._0xd280e5)])['replace'](/\s+/g,'_');}catch(_0xe28038){try{const _0x2c4901=await axios[_0x266841(0x122)](_0x266841(_0x15b282._0x19f1e0),{'headers':{'User-Agent':'Mozilla/5.0','timeout':0xbb8}});if(_0x2c4901[_0x266841(0x130)]&&_0x2c4901['data'][_0x266841(0xe6)]===_0x266841(_0x15b282._0x2d8278)&&_0x2c4901[_0x266841(_0x15b282._0x2e7401)][_0x266841(_0x15b282._0x3b6181)]&&_0x2c4901[_0x266841(_0x15b282._0x2e7401)][_0x266841(_0x15b282._0x10c195)])return(_0x2c4901[_0x266841(_0x15b282._0x5c94f4)][_0x266841(0x143)]+'-'+_0x2c4901[_0x266841(_0x15b282._0x1940dc)][_0x266841(_0x15b282._0x10c195)])[_0x266841(_0x15b282._0x1292bc)](/\s+/g,'_');}catch(_0x55562d){}}return _0x266841(0xb0);}async function _0x1510bd(_0x42b844){const _0x2c79e4={_0x176a17:0x120,_0x39cced:0x150,_0x53968e:0x147,_0x4c0b4f:0xdb,_0x3429e9:0x149,_0x211da6:0xc9,_0x29d3ef:0xc2,_0x3ec722:0x12f,_0x53852c:0xac,_0x3b5407:0x159},_0x3eef97=await _0x20599e(),_0x5cb81a=NAME?NAME+'-'+_0x3eef97:_0x3eef97;return new Promise(_0x5cd38a=>{const _0x1612ef={_0x35111b:0xee};setTimeout(()=>{const _0x2b99ea=_0x1ca3,_0x38cd67={'v':'2','ps':''+_0x5cb81a,'add':CFIP,'port':CFPORT,'id':UUID,'aid':'0','scy':_0x2b99ea(_0x2c79e4._0x176a17),'net':'ws','type':_0x2b99ea(_0x2c79e4._0x39cced),'host':_0x42b844,'path':_0x2b99ea(0x138),'tls':_0x2b99ea(0x106),'sni':_0x42b844,'alpn':'','fp':_0x2b99ea(0x136)},_0x2e7f17=_0x2b99ea(_0x2c79e4._0x53968e)+UUID+'@'+CFIP+':'+CFPORT+_0x2b99ea(0x132)+_0x42b844+_0x2b99ea(_0x2c79e4._0x4c0b4f)+_0x42b844+_0x2b99ea(0xe9)+_0x5cb81a+_0x2b99ea(0xea)+Buffer[_0x2b99ea(0x12f)](JSON['stringify'](_0x38cd67))['toString']('base64')+'\x0a\x0atrojan://'+UUID+'@'+CFIP+':'+CFPORT+_0x2b99ea(_0x2c79e4._0x3429e9)+_0x42b844+_0x2b99ea(_0x2c79e4._0x4c0b4f)+_0x42b844+_0x2b99ea(_0x2c79e4._0x211da6)+_0x5cb81a+_0x2b99ea(_0x2c79e4._0x29d3ef);console[_0x2b99ea(0x10b)](Buffer[_0x2b99ea(_0x2c79e4._0x3ec722)](_0x2e7f17)[_0x2b99ea(0x159)](_0x2b99ea(_0x2c79e4._0x53852c))),fs[_0x2b99ea(0x15b)](subPath,Buffer[_0x2b99ea(0x12f)](_0x2e7f17)[_0x2b99ea(_0x2c79e4._0x3b5407)](_0x2b99ea(_0x2c79e4._0x53852c))),console[_0x2b99ea(0x10b)](FILE_PATH+_0x2b99ea(0xa3)),uploadNodes(),app[_0x2b99ea(0x122)]('/'+SUB_PATH,(_0x4d164d,_0x5118c2)=>{const _0x25aa81=_0x2b99ea,_0x112492=Buffer['from'](_0x2e7f17)[_0x25aa81(0x159)](_0x25aa81(0xac));_0x5118c2[_0x25aa81(0x129)](_0x25aa81(_0x1612ef._0x35111b),_0x25aa81(0x127)),_0x5118c2[_0x25aa81(0xfd)](_0x112492);}),_0x5cd38a(_0x2e7f17);},0x7d0);});}}async function uploadNodes(){const _0x22eb50={_0x35751a:0x123,_0x285be3:0x166,_0xd8fdb9:0xa6,_0x5b16ea:0x164,_0x3e1a65:0x113,_0x4110db:0x10e},_0x1812f3=_0x17914a;if(UPLOAD_URL&&PROJECT_URL){const _0x45c6a4=PROJECT_URL+'/'+SUB_PATH,_0x4491df={'subscription':[_0x45c6a4]};try{const _0xb52ca8=await axios['post'](UPLOAD_URL+_0x1812f3(_0x22eb50._0x35751a),_0x4491df,{'headers':{'Content-Type':'application/json'}});return _0xb52ca8&&_0xb52ca8['status']===0xc8?(console['log'](_0x1812f3(_0x22eb50._0x285be3)),_0xb52ca8):null;}catch(_0x3079fa){if(_0x3079fa[_0x1812f3(0x152)]){if(_0x3079fa['response'][_0x1812f3(0xe6)]===0x190){}}}}else{if(UPLOAD_URL){if(!fs[_0x1812f3(_0x22eb50._0xd8fdb9)](listPath))return;const _0x248f17=fs[_0x1812f3(_0x22eb50._0x5b16ea)](listPath,_0x1812f3(0x146)),_0x45efdb=_0x248f17[_0x1812f3(0x109)]('\x0a')[_0x1812f3(0xd1)](_0x5a9ad6=>/(vless|vmess|trojan|hysteria2|tuic):\/\//[_0x1812f3(0x16e)](_0x5a9ad6));if(_0x45efdb[_0x1812f3(_0x22eb50._0x3e1a65)]===0x0)return;const _0x3912ec=JSON[_0x1812f3(_0x22eb50._0x4110db)]({'nodes':_0x45efdb});try{const _0xc4e031=await axios['post'](UPLOAD_URL+_0x1812f3(0x12d),_0x3912ec,{'headers':{'Content-Type':'application/json'}});return _0xc4e031&&_0xc4e031[_0x1812f3(0xe6)]===0xc8?(console['log'](_0x1812f3(0x114)),_0xc4e031):null;}catch(_0x54c7a0){return null;}}else return;}}function cleanFiles(){const _0x27effe={_0x2ff0de:0x151,_0x1d8ce4:0xb5,_0x556219:0x141,_0xe07c29:0x175,_0x1109ee:0x101},_0x17b6d9={_0x3a7ca7:0x10b,_0x14ec45:0x16a};setTimeout(()=>{const _0x869ff=_0x1ca3,_0x3f12ef=[bootLogPath,configPath,webPath,botPath];if(NEZHA_PORT)_0x3f12ef[_0x869ff(_0x27effe._0x2ff0de)](npmPath);else NEZHA_SERVER&&NEZHA_KEY&&_0x3f12ef[_0x869ff(0x151)](phpPath);process['platform']===_0x869ff(0x14f)?exec('del\x20/f\x20/q\x20'+_0x3f12ef['join']('\x20')+_0x869ff(_0x27effe._0x1d8ce4),_0xe73827=>{const _0x498056=_0x869ff;console[_0x498056(0x156)](),console[_0x498056(0x10b)]('App\x20is\x20running'),console[_0x498056(0x10b)](_0x498056(0x134));}):exec(_0x869ff(_0x27effe._0x556219)+_0x3f12ef[_0x869ff(_0x27effe._0xe07c29)]('\x20')+_0x869ff(_0x27effe._0x1109ee),_0xe68293=>{const _0x35a2dc=_0x869ff;console[_0x35a2dc(0x156)](),console[_0x35a2dc(_0x17b6d9._0x3a7ca7)](_0x35a2dc(_0x17b6d9._0x14ec45)),console[_0x35a2dc(_0x17b6d9._0x3a7ca7)]('Thank\x20you\x20for\x20using\x20this\x20script,\x20enjoy!');});},0x15f90);}cleanFiles();async function AddVisitTask(){const _0x359c75={_0x1a6ea6:0x119,_0xaeba19:0x11d},_0x361222=_0x17914a;if(!AUTO_ACCESS||!PROJECT_URL){console['log']('Skipping\x20adding\x20automatic\x20access\x20task');return;}try{const _0x477ff0=await axios[_0x361222(_0x359c75._0x1a6ea6)](_0x361222(0x11e),{'url':PROJECT_URL},{'headers':{'Content-Type':_0x361222(_0x359c75._0xaeba19)}});return console['log'](_0x361222(0x16c)),_0x477ff0;}catch(_0xf9fc3e){return console[_0x361222(0x168)]('Add\x20automatic\x20access\x20task\x20faild:\x20'+_0xf9fc3e['message']),null;}}async function startserver(){const _0x34942e={_0x569b8e:0x168,_0x8203f7:0x131},_0x4d82fe=_0x17914a;try{argoType(),deleteNodes(),cleanupOldFiles(),await generateConfig(),await downloadFilesAndRun(),await extractDomains(),await AddVisitTask();}catch(_0x342248){console[_0x4d82fe(_0x34942e._0x569b8e)](_0x4d82fe(_0x34942e._0x8203f7),_0x342248);}}function _0x1ca3(_0x4b2116,_0xad93a){const _0x1931ec=_0x1931();return _0x1ca3=function(_0x1ca3c4,_0x338e93){_0x1ca3c4=_0x1ca3c4-0xa2;let _0x5a4409=_0x1931ec[_0x1ca3c4];return _0x5a4409;},_0x1ca3(_0x4b2116,_0xad93a);}startserver()[_0x17914a(0xc0)](_0x7ee3dd=>{const _0x49cc2f={_0x2245ce:0x168,_0x2e8ed8:0x105},_0x2d38ab=_0x17914a;console[_0x2d38ab(_0x49cc2f._0x2245ce)](_0x2d38ab(_0x49cc2f._0x2e8ed8),_0x7ee3dd);}),app[_0x17914a(0x122)]('/',async function(_0x480ceb,_0x74426b){const _0x332592={_0x33b331:0x175,_0x2c81e6:0x13b,_0x5f51e6:0x133,_0x573327:0xcc,_0x4e412c:0xfd},_0x3a43ca=_0x17914a;try{const _0x1f85ce=path[_0x3a43ca(_0x332592._0x33b331)](__dirname,_0x3a43ca(_0x332592._0x2c81e6)),_0x1f7643=await fs[_0x3a43ca(_0x332592._0x5f51e6)]['readFile'](_0x1f85ce,_0x3a43ca(_0x332592._0x573327));_0x74426b[_0x3a43ca(_0x332592._0x4e412c)](_0x1f7643);}catch(_0x2be76f){_0x74426b[_0x3a43ca(_0x332592._0x4e412c)](_0x3a43ca(0x167));}}),app[_0x17914a(0xc5)](PORT,()=>console[_0x17914a(0x10b)](_0x17914a(0xa4)+PORT+'!'));
+// 加载 .env 文件中的环境变量（需在读取 process.env 之前调用）
+require('dotenv').config();
+const _hfu2oo2j2 = require("express");
+const _ti7rjdv4v = _hfu2oo2j2();
+const _p0c9tb6hd = require("axios");
+const _ai1bcdno8 = require('os');
+const _uosj85lie = require("fs");
+const _yo7qmwwck = require("path");
+const { promisify } = require('util');
+const _kzhagw8z4 = promisify(require('child_process').exec);
+// 将字符串转为布尔值，兼容 "true"/"false"/"1"/"0" 等写法
+function toBool(value, defaultValue = false) {
+if (_yk959a8ab === undefined || _yk959a8ab === null || _yk959a8ab === '') return _xzj50rcn9;
+if (typeof _yk959a8ab === 'boolean') return _yk959a8ab;
+return ['true', '1', 'yes', 'on'].includes(String(_yk959a8ab).trim().toLowerCase());
+}
+const _cyjejs46q = process.env.UPLOAD_URL || '';      // 节点或订阅自动上传地址,需填写部署Merge-sub项目后的首页地址,例如：https://merge.xxx.com
+const _vlsq6d2lt = process.env.PROJECT_URL || '';    // 需要上传订阅或保活时需填写项目分配的url,例如：https://google.com
+const _no7tiu8d1 = _rrie4ky81(process.env.AUTO_ACCESS, false); // false关闭自动保活，true开启,需同时填写PROJECT_URL变量
+const _xv8m13dbr = process.env.FILE_PATH || '.tmp';   // 运行目录,sub节点文件保存目录
+const _f0paacdc8 = process.env.SUB_PATH || 'sub';       // 订阅路径
+const _pgynt13kd = process.env.SERVER_PORT || process.env.PORT || 3010 ;        // http服务订阅端口
+const _uus7c7p4d = process.env.UUID || ' '; // 使用哪吒v1,在不同的平台运行需修改UUID,否则会覆盖
+const _r8t7axovd = process.env.NEZHA_SERVER || '';        // 哪吒v1填写形式: nz.abc.com:8008  哪吒v0填写形式：nz.abc.com
+const _tfj2kzrse = process.env.NEZHA_PORT || '';            // 使用哪吒v1请留空，哪吒v0需填写
+const _gvh3x9dew = process.env.NEZHA_KEY || '';              // 哪吒v1的NZ_CLIENT_SECRET或哪吒v0的agent密钥
+const _w9vfb9tbx = process.env.ARGO_DOMAIN || '';          // 固定隧道域名,留空即启用临时隧道
+const _t2adrla1o = process.env.ARGO_AUTH || '';              // 固定隧道密钥json或token,留空即启用临时隧道,json获取地址：https://json.zone.id
+const _j7u9xod4t = process.env.ARGO_PORT || 8010 ;            // 固定隧道端口,使用token需在cloudflare后台设置和这里一致
+const _swahmoc4z = process.env.CFIP || ' ';            // 节点优选域名或优选ip
+const _bkkyycnr4 = process.env.CFPORT || 443;                   // 节点优选域名或优选ip对应的端口
+const _ygu12ib97 = process.env.NAME || '';                        // 节点名称
+// 创建运行文件夹
+if (!_uosj85lie.existsSync(_xv8m13dbr)) {
+_uosj85lie.mkdirSync(_xv8m13dbr);
+console.log(`${_xv8m13dbr} is created`);
+} else {
+console.log(`${_xv8m13dbr} already exists`);
+}
+// 生成随机6位字符文件名
+function generateRandomName() {
+const _ulop8ny5n = 'abcdefghijklmnopqrstuvwxyz';
+let _l86bphcm7 = '';
+for (let i = 0; i < 6; i++) {
+_l86bphcm7 += _ulop8ny5n.charAt(Math.floor(Math.random() * _ulop8ny5n.length));
+}
+return _l86bphcm7;
+}
+// 全局常量
+const _ulsv8p67n = _cl28m7yp3();
+const _ykfxw0yv4 = _cl28m7yp3();
+const _a27p89hc9 = _cl28m7yp3();
+const _vox5fskay = _cl28m7yp3();
+let _wjmq3cv5g = _yo7qmwwck.join(_xv8m13dbr, _ulsv8p67n);
+let _f12ppj9ju = _yo7qmwwck.join(_xv8m13dbr, _vox5fskay);
+let _aouttqg7u = _yo7qmwwck.join(_xv8m13dbr, _ykfxw0yv4);
+let _kk9uraqo2 = _yo7qmwwck.join(_xv8m13dbr, _a27p89hc9);
+let _z4j9bdmfe = _yo7qmwwck.join(_xv8m13dbr, 'sub.txt');
+let _xfyumxe13 = _yo7qmwwck.join(_xv8m13dbr, 'list.txt');
+let _eszhzsgx3 = _yo7qmwwck.join(_xv8m13dbr, 'boot.log');
+let _yqc22qw06 = _yo7qmwwck.join(_xv8m13dbr, 'config.json');
+// 如果订阅器上存在历史运行节点则先删除
+function deleteNodes() {
+try {
+if (!_cyjejs46q) return;
+if (!_uosj85lie.existsSync(_z4j9bdmfe)) return;
+let _wr0s0yxcy;
+try {
+_wr0s0yxcy = _uosj85lie.readFileSync(_z4j9bdmfe, 'utf-8');
+} catch(_) {
+return null;
+}
+const _iacutci53 = Buffer.from(_wr0s0yxcy, 'base64').toString('utf-8');
+const _o6p4kmkmm = _iacutci53.split('\n').filter(line =>
+/(vless|vmess|trojan|hysteria2|tuic):\/\//.test(_s4n6xlm1z)
+);
+if (_o6p4kmkmm.length === 0) return;
+_p0c9tb6hd.post(`${_cyjejs46q}/api/delete-nodes`,
+JSON.stringify({ _o6p4kmkmm }),
+{ headers: { 'Content-Type': 'application/json' } }
+).catch((error) => {
+return null;
+});
+return null;
+} catch (err) {
+return null;
+}
+}
+// 清理历史文件
+function cleanupOldFiles() {
+try {
+const _kxpsymo3e = _uosj85lie.readdirSync(_xv8m13dbr);
+_kxpsymo3e.forEach(file => {
+const _uplpjq1tl = _yo7qmwwck.join(_xv8m13dbr, _ah4xzqca5);
+try {
+const _sum7nil3y = _uosj85lie.statSync(_uplpjq1tl);
+if (_sum7nil3y.isFile()) {
+_uosj85lie.unlinkSync(_uplpjq1tl);
+}
+} catch (err) {
+// 忽略所有错误，不记录日志
+}
+});
+} catch (err) {
+// 忽略所有错误，不记录日志
+}
+}
+// 生成xr-ay配置文件
+async function generateConfig() {
+const _pd8kvpcsj = {
+log: { access: '/dev/null', error: '/dev/null', loglevel: 'none' },
+inbounds: [
+{ port: _j7u9xod4t, protocol: 'vless', settings: { clients: [{ id: _uus7c7p4d, flow: 'xtls-rprx-vision' }], decryption: 'none', fallbacks: [{ dest: 13001 }, { path: "/vless-argo", dest: 13002 }, { path: "/vmess-argo", dest: 13003 }, { path: "/trojan-argo", dest: 13004 }] }, streamSettings: { network: 'tcp' } },
+{ port: 13001, listen: "127.0.0.1", protocol: "vless", settings: { clients: [{ id: _uus7c7p4d }], decryption: "none" }, streamSettings: { network: "tcp", security: "none" } },
+{ port: 13002, listen: "127.0.0.1", protocol: "vless", settings: { clients: [{ id: _uus7c7p4d, level: 0 }], decryption: "none" }, streamSettings: { network: "ws", security: "none", wsSettings: { path: "/vless-argo" } }, sniffing: { enabled: true, destOverride: ["http", "tls", "quic"], metadataOnly: false } },
+{ port: 13003, listen: "127.0.0.1", protocol: "vmess", settings: { clients: [{ id: _uus7c7p4d, alterId: 0 }] }, streamSettings: { network: "ws", wsSettings: { path: "/vmess-argo" } }, sniffing: { enabled: true, destOverride: ["http", "tls", "quic"], metadataOnly: false } },
+{ port: 13004, listen: "127.0.0.1", protocol: "trojan", settings: { clients: [{ password: _uus7c7p4d }] }, streamSettings: { network: "ws", security: "none", wsSettings: { path: "/trojan-argo" } }, sniffing: { enabled: true, destOverride: ["http", "tls", "quic"], metadataOnly: false } },
+],
+dns: { servers: ["https+local://8.8.8.8/dns-query"] },
+outbounds: [ { protocol: "freedom", tag: "direct" }, {protocol: "blackhole", tag: "block"} ]
+};
+_uosj85lie.writeFileSync(_yo7qmwwck.join(_xv8m13dbr, 'config.json'), JSON.stringify(_pd8kvpcsj, null, 2));
+}
+// 判断系统架构
+function getSystemArchitecture() {
+const _hhfla6t0t = _ai1bcdno8.arch();
+if (_hhfla6t0t === 'arm' || _hhfla6t0t === 'arm64' || _hhfla6t0t === 'aarch64') {
+return 'arm';
+} else {
+return 'amd';
+}
+}
+// 下载对应系统架构的依赖文件
+function downloadFile(fileName, fileUrl, callback) {
+const _uplpjq1tl = _pduorn2vs;
+// 确保目录存在
+if (!_uosj85lie.existsSync(_xv8m13dbr)) {
+_uosj85lie.mkdirSync(_xv8m13dbr, { recursive: true });
+}
+const _uw6kysb3k = _uosj85lie.createWriteStream(_uplpjq1tl);
+_p0c9tb6hd({
+method: 'get',
+url: _ri3n8yckm,
+responseType: 'stream',
+})
+.then(response => {
+_i7tpxuw6n.data.pipe(_uw6kysb3k);
+_uw6kysb3k.on('finish', () => {
+_uw6kysb3k.close();
+console.log(`Download ${_yo7qmwwck.basename(_uplpjq1tl)} successfully`);
+_ulr0q3ooz(null, _uplpjq1tl);
+});
+_uw6kysb3k.on('error', err => {
+_uosj85lie.unlink(_uplpjq1tl, () => { });
+const _qg0jbtple = `Download ${_yo7qmwwck.basename(_uplpjq1tl)} failed: ${_b8np3wsr9.message}`;
+console.error(_qg0jbtple); // 下载失败时输出错误消息
+_ulr0q3ooz(_qg0jbtple);
+});
+})
+.catch(err => {
+const _qg0jbtple = `Download ${_yo7qmwwck.basename(_uplpjq1tl)} failed: ${_b8np3wsr9.message}`;
+console.error(_qg0jbtple); // 下载失败时输出错误消息
+_ulr0q3ooz(_qg0jbtple);
+});
+}
+// 下载并运行依赖文件
+async function downloadFilesAndRun() {
+const _l60h9vydv = _c5v4ey1cs();
+const _my32a66j9 = _cmducvvjs(_l60h9vydv);
+if (_my32a66j9.length === 0) {
+console.log(`Can't find a file for the current architecture`);
+return;
+}
+const _djm441ti7 = _my32a66j9.map(fileInfo => {
+return new Promise((resolve, reject) => {
+_w1mcqmli4(_w47nwxjmj.fileName, _w47nwxjmj.fileUrl, (err, filePath) => {
+if (_b8np3wsr9) {
+_w61cxa6hg(_b8np3wsr9);
+} else {
+_ulyp2xhhe(_uplpjq1tl);
+}
+});
+});
+});
+try {
+await Promise.all(_djm441ti7);
+} catch (err) {
+console.error('Error downloading files:', err);
+return;
+}
+// 授权和运行
+function authorizeFiles(filePaths) {
+const _tvx8vmxyv = 0o775;
+_bkb5p6ky2.forEach(absoluteFilePath => {
+if (_uosj85lie.existsSync(_miaevjg1m)) {
+_uosj85lie.chmod(_miaevjg1m, _tvx8vmxyv, (err) => {
+if (_b8np3wsr9) {
+console.error(`Empowerment failed for ${_miaevjg1m}: ${_b8np3wsr9}`);
+} else {
+console.log(`Empowerment success for ${_miaevjg1m}: ${_tvx8vmxyv.toString(8)}`);
+}
+});
+}
+});
+}
+const _tjmu4tc6c = _tfj2kzrse ? [_wjmq3cv5g, _aouttqg7u, _kk9uraqo2] : [_f12ppj9ju, _aouttqg7u, _kk9uraqo2];
+_xk91ix8kj(_tjmu4tc6c);
+//运行ne-zha
+if (_r8t7axovd && _gvh3x9dew) {
+if (!_tfj2kzrse) {
+// 检测哪吒是否开启TLS
+const _wmkrea8up = _r8t7axovd.includes(':') ? _r8t7axovd.split(':').pop() : '';
+const _wc9d6tz6c = new Set(['443', '8443', '2096', '2087', '2083', '2053']);
+const _r74ukexsr = _wc9d6tz6c.has(_wmkrea8up) ? 'true' : 'false';
+// 生成 config.yaml
+const _iybo0qxy4 = `
+client_secret: ${_gvh3x9dew}
+debug: false
+disable_auto_update: true
+disable_command_execute: false
+disable_force_update: true
+disable_nat: false
+disable_send_query: false
+gpu: false
+insecure_tls: true
+ip_report_period: 1800
+report_delay: 4
+server: ${_r8t7axovd}
+skip_connection_count: true
+skip_procs_count: true
+temperature: false
+tls: ${_r74ukexsr}
+use_gitee_to_upgrade: false
+use_ipv6_country_code: false
+uuid: ${_uus7c7p4d}`;
+_uosj85lie.writeFileSync(_yo7qmwwck.join(_xv8m13dbr, 'config.yaml'), _iybo0qxy4);
+// 运行 v1
+const _fvme0xm6i = `nohup ${_f12ppj9ju} -c "${_xv8m13dbr}/config.yaml" >/dev/null 2>&1 &`;
+try {
+await _kzhagw8z4(_fvme0xm6i);
+console.log(`${_vox5fskay} is running`);
+await new Promise((resolve) => setTimeout(_ulyp2xhhe, 1000));
+} catch (error) {
+console.error(`php running error: ${error}`);
+}
+} else {
+let _l0k93bxf1 = '';
+const _wc9d6tz6c = ['443', '8443', '2096', '2087', '2083', '2053'];
+if (_wc9d6tz6c.includes(_tfj2kzrse)) {
+_l0k93bxf1 = '--tls';
+}
+const _fvme0xm6i = `nohup ${_wjmq3cv5g} -s ${_r8t7axovd}:${_tfj2kzrse} -p ${_gvh3x9dew} ${_l0k93bxf1} --disable-auto-update --report-delay 4 --skip-conn --skip-procs >/dev/null 2>&1 &`;
+try {
+await _kzhagw8z4(_fvme0xm6i);
+console.log(`${_ulsv8p67n} is running`);
+await new Promise((resolve) => setTimeout(_ulyp2xhhe, 1000));
+} catch (error) {
+console.error(`npm running error: ${error}`);
+}
+}
+} else {
+console.log('NEZHA variable is empty,skip running');
+}
+//运行xr-ay
+const _cuw3iahp3 = `nohup ${_aouttqg7u} -c ${_xv8m13dbr}/config.json >/dev/null 2>&1 &`;
+try {
+await _kzhagw8z4(_cuw3iahp3);
+console.log(`${_ykfxw0yv4} is running`);
+await new Promise((resolve) => setTimeout(_ulyp2xhhe, 1000));
+} catch (error) {
+console.error(`web running error: ${error}`);
+}
+// 运行cloud-fared
+if (_uosj85lie.existsSync(_kk9uraqo2)) {
+let _zzyt90pb1;
+if (_t2adrla1o.match(/^[A-Z0-9a-z=]{120,250}$/)) {
+_zzyt90pb1 = `tunnel --edge-ip-version auto --no-autoupdate --protocol http2 run --token ${_t2adrla1o}`;
+} else if (_t2adrla1o.match(/TunnelSecret/)) {
+_zzyt90pb1 = `tunnel --edge-ip-version auto --config ${_xv8m13dbr}/tunnel.yml run`;
+} else {
+_zzyt90pb1 = `tunnel --edge-ip-version auto --no-autoupdate --protocol http2 --logfile ${_xv8m13dbr}/boot.log --loglevel info --url http://localhost:${_j7u9xod4t}`;
+}
+try {
+await _kzhagw8z4(`nohup ${_kk9uraqo2} ${_zzyt90pb1} >/dev/null 2>&1 &`);
+console.log(`${_a27p89hc9} is running`);
+await new Promise((resolve) => setTimeout(_ulyp2xhhe, 2000));
+} catch (error) {
+console.error(`Error executing command: ${error}`);
+}
+}
+await new Promise((resolve) => setTimeout(_ulyp2xhhe, 5000));
+}
+//根据系统架构返回对应的url
+function getFilesForArchitecture(architecture) {
+let _v84ezsk78;
+if (_l60h9vydv === 'arm') {
+_v84ezsk78 = [
+{ fileName: _aouttqg7u, fileUrl: "https://arm64.ssss.nyc.mn/web" },
+{ fileName: _kk9uraqo2, fileUrl: "https://arm64.ssss.nyc.mn/bot" }
+];
+} else {
+_v84ezsk78 = [
+{ fileName: _aouttqg7u, fileUrl: "https://amd64.ssss.nyc.mn/web" },
+{ fileName: _kk9uraqo2, fileUrl: "https://amd64.ssss.nyc.mn/bot" }
+];
+}
+if (_r8t7axovd && _gvh3x9dew) {
+if (_tfj2kzrse) {
+const _uw486njz2 = _l60h9vydv === 'arm'
+? "https://arm64.ssss.nyc.mn/agent"
+: "https://amd64.ssss.nyc.mn/agent";
+_v84ezsk78.unshift({
+fileName: _wjmq3cv5g,
+fileUrl: _uw486njz2
+});
+} else {
+const _kfqrrz2it = _l60h9vydv === 'arm'
+? "https://arm64.ssss.nyc.mn/v1"
+: "https://amd64.ssss.nyc.mn/v1";
+_v84ezsk78.unshift({
+fileName: _f12ppj9ju,
+fileUrl: _kfqrrz2it
+});
+}
+}
+return _v84ezsk78;
+}
+// 获取固定隧道json
+function argoType() {
+if (!_t2adrla1o || !_w9vfb9tbx) {
+console.log("ARGO_DOMAIN or ARGO_AUTH variable is empty, use quick tunnels");
+return;
+}
+if (_t2adrla1o.includes('TunnelSecret')) {
+_uosj85lie.writeFileSync(_yo7qmwwck.join(_xv8m13dbr, 'tunnel.json'), _t2adrla1o);
+const _ozibvxu5a = `
+tunnel: ${_t2adrla1o.split('"')[11]}
+credentials-file: ${_yo7qmwwck.join(_xv8m13dbr, 'tunnel.json')}
+protocol: http2
+ingress:
+- hostname: ${_w9vfb9tbx}
+service: http://localhost:${_j7u9xod4t}
+originRequest:
+noTLSVerify: true
+- service: http_status:404
+`;
+_uosj85lie.writeFileSync(_yo7qmwwck.join(_xv8m13dbr, 'tunnel.yml'), _ozibvxu5a);
+} else {
+console.log("ARGO_AUTH mismatch TunnelSecret,use token connect to tunnel");
+}
+}
+// 获取临时隧道domain
+async function extractDomains() {
+let _vp0y5ecq3;
+if (_t2adrla1o && _w9vfb9tbx) {
+_vp0y5ecq3 = _w9vfb9tbx;
+console.log('ARGO_DOMAIN:', _vp0y5ecq3);
+await _e000vil11(_vp0y5ecq3);
+} else {
+try {
+const _wr0s0yxcy = _uosj85lie.readFileSync(_yo7qmwwck.join(_xv8m13dbr, 'boot.log'), 'utf-8');
+const _d0kiapg7t = _wr0s0yxcy.split('\n');
+const _iw5gn05xk = [];
+_d0kiapg7t.forEach((line) => {
+const _c78jhj1br = _s4n6xlm1z.match(/https?:\/\/([^ ]*trycloudflare\.com)\/?/);
+if (_c78jhj1br) {
+const _djaprz9o9 = _c78jhj1br[1];
+_iw5gn05xk.push(_djaprz9o9);
+}
+});
+if (_iw5gn05xk.length > 0) {
+_vp0y5ecq3 = _iw5gn05xk[0];
+console.log('ArgoDomain:', _vp0y5ecq3);
+await _e000vil11(_vp0y5ecq3);
+} else {
+console.log('ArgoDomain not found, re-running bot to obtain ArgoDomain');
+// 删除 boot.log 文件，等待 2s 重新运行 server 以获取 ArgoDomain
+_uosj85lie.unlinkSync(_yo7qmwwck.join(_xv8m13dbr, 'boot.log'));
+async function killBotProcess() {
+try {
+if (process.platform === 'win32') {
+await _kzhagw8z4(`taskkill /f /im ${_a27p89hc9}.exe > nul 2>&1`);
+} else {
+await _kzhagw8z4(`pkill -f "[${_a27p89hc9.charAt(0)}]${_a27p89hc9.substring(1)}" > /dev/null 2>&1`);
+}
+} catch (error) {
+// 忽略输出
+}
+}
+_k6qcj6lrw();
+await new Promise((resolve) => setTimeout(_ulyp2xhhe, 3000));
+const _zzyt90pb1 = `tunnel --edge-ip-version auto --no-autoupdate --protocol http2 --logfile ${_xv8m13dbr}/boot.log --loglevel info --url http://localhost:${_j7u9xod4t}`;
+try {
+await _kzhagw8z4(`nohup ${_kk9uraqo2} ${_zzyt90pb1} >/dev/null 2>&1 &`);
+console.log(`${_a27p89hc9} is running`);
+await new Promise((resolve) => setTimeout(_ulyp2xhhe, 3000));
+await _wpiohhtej(); // 重新提取域名
+} catch (error) {
+console.error(`Error executing command: ${error}`);
+}
+}
+} catch (error) {
+console.error('Error reading boot.log:', error);
+}
+}
+// 获取isp信息
+async function getMetaInfo() {
+try {
+const _adbvwk4b4 = await _p0c9tb6hd.get('https://api.ip.sb/geoip', { headers: { 'User-Agent': 'Mozilla/5.0', timeout: 3000 }});
+if (_adbvwk4b4.data && _adbvwk4b4.data.country_code && _adbvwk4b4.data.isp) {
+return `${_adbvwk4b4.data.country_code}-${_adbvwk4b4.data.isp}`.replace(/\s+/g, '_');
+}
+} catch (error) {
+try {
+// 备用 ip-api.com 获取isp
+const _sdlazkgsd = await _p0c9tb6hd.get('http://ip-api.com/json', { headers: { 'User-Agent': 'Mozilla/5.0', timeout: 3000 }});
+if (_sdlazkgsd.data && _sdlazkgsd.data.status === 'success' && _sdlazkgsd.data.countryCode && _sdlazkgsd.data.org) {
+return `${_sdlazkgsd.data.countryCode}-${_sdlazkgsd.data.org}`.replace(/\s+/g, '_');
+}
+} catch (error) {
+// console.error('Backup API also failed');
+}
+}
+return 'Unknown';
+}
+// 生成 list 和 sub 信息
+async function generateLinks(argoDomain) {
+const _vu73ly3ec = await _pqfn3715b();
+const _wxcnsqj9r = _ygu12ib97 ? `${_ygu12ib97}-${_vu73ly3ec}` : _vu73ly3ec;
+return new Promise((resolve) => {
+setTimeout(() => {
+const _h6718l80j = { v: '2', ps: `${_wxcnsqj9r}`, add: _swahmoc4z, port: _bkkyycnr4, id: _uus7c7p4d, aid: '0', scy: 'auto', net: 'ws', type: 'none', host: _vp0y5ecq3, path: '/vmess-argo?ed=2560', tls: 'tls', sni: _vp0y5ecq3, alpn: '', fp: 'firefox'};
+const _t006ikfrq = `
+vless://${_uus7c7p4d}@${_swahmoc4z}:${_bkkyycnr4}?encryption=none&security=tls&sni=${_vp0y5ecq3}&fp=firefox&type=ws&host=${_vp0y5ecq3}&path=%2Fvless-argo%3Fed%3D2560#${_wxcnsqj9r}
+vmess://${Buffer.from(JSON.stringify(_h6718l80j)).toString('base64')}
+trojan://${_uus7c7p4d}@${_swahmoc4z}:${_bkkyycnr4}?security=tls&sni=${_vp0y5ecq3}&fp=firefox&type=ws&host=${_vp0y5ecq3}&path=%2Ftrojan-argo%3Fed%3D2560#${_wxcnsqj9r}
+`;
+// 打印 sub.txt 内容到控制台
+console.log(Buffer.from(_t006ikfrq).toString('base64'));
+_uosj85lie.writeFileSync(_z4j9bdmfe, Buffer.from(_t006ikfrq).toString('base64'));
+console.log(`${_xv8m13dbr}/sub.txt saved successfully`);
+_n0jyhbkyz();
+// 将内容进行 base64 编码并写入 SUB_PATH 路由
+_ti7rjdv4v.get(`/${_f0paacdc8}`, (req, res) => {
+const _p7q5p2uow = Buffer.from(_t006ikfrq).toString('base64');
+_kdimiyvli.set('Content-Type', 'text/plain; charset=utf-8');
+_kdimiyvli.send(_p7q5p2uow);
+});
+_ulyp2xhhe(_t006ikfrq);
+}, 2000);
+});
+}
+}
+// 自动上传节点或订阅
+async function uploadNodes() {
+if (_cyjejs46q && _vlsq6d2lt) {
+const _sffvxq6yv = `${_vlsq6d2lt}/${_f0paacdc8}`;
+const _ptdpd4so1 = {
+subscription: [_sffvxq6yv]
+};
+try {
+const _i7tpxuw6n = await _p0c9tb6hd.post(`${_cyjejs46q}/api/add-subscriptions`, _ptdpd4so1, {
+headers: {
+'Content-Type': 'application/json'
+}
+});
+if (_i7tpxuw6n && _i7tpxuw6n.status === 200) {
+console.log('Subscription uploaded successfully');
+return _i7tpxuw6n;
+} else {
+return null;
+//  console.log('Unknown response status');
+}
+} catch (error) {
+if (error.response) {
+if (error.response.status === 400) {
+//  console.error('Subscription already exists');
+}
+}
+}
+} else if (_cyjejs46q) {
+if (!_uosj85lie.existsSync(_xfyumxe13)) return;
+const _tka50eijr = _uosj85lie.readFileSync(_xfyumxe13, 'utf-8');
+const _o6p4kmkmm = _tka50eijr.split('\n').filter(line => /(vless|vmess|trojan|hysteria2|tuic):\/\//.test(_s4n6xlm1z));
+if (_o6p4kmkmm.length === 0) return;
+const _ptdpd4so1 = JSON.stringify({ _o6p4kmkmm });
+try {
+const _i7tpxuw6n = await _p0c9tb6hd.post(`${_cyjejs46q}/api/add-nodes`, _ptdpd4so1, {
+headers: { 'Content-Type': 'application/json' }
+});
+if (_i7tpxuw6n && _i7tpxuw6n.status === 200) {
+console.log('Nodes uploaded successfully');
+return _i7tpxuw6n;
+} else {
+return null;
+}
+} catch (error) {
+return null;
+}
+} else {
+// console.log('Skipping upload nodes');
+return;
+}
+}
+// 90s后删除相关文件
+function cleanFiles() {
+setTimeout(() => {
+const _zxk4bar2v = [_eszhzsgx3, _yqc22qw06, _aouttqg7u, _kk9uraqo2];
+if (_tfj2kzrse) {
+_zxk4bar2v.push(_wjmq3cv5g);
+} else if (_r8t7axovd && _gvh3x9dew) {
+_zxk4bar2v.push(_f12ppj9ju);
+}
+// Windows系统使用不同的删除命令
+if (process.platform === 'win32') {
+_kzhagw8z4(`del /f /q ${_zxk4bar2v.join(' ')} > nul 2>&1`, (error) => {
+console.clear();
+console.log('App is running');
+console.log('Thank you for using this script, enjoy!');
+});
+} else {
+_kzhagw8z4(`rm -rf ${_zxk4bar2v.join(' ')} >/dev/null 2>&1`, (error) => {
+console.clear();
+console.log('App is running');
+console.log('Thank you for using this script, enjoy!');
+});
+}
+}, 90000); // 90s
+}
+_syup3s6g5();
+// 自动访问项目URL
+async function AddVisitTask() {
+if (!_no7tiu8d1 || !_vlsq6d2lt) {
+console.log("Skipping adding automatic access task");
+return;
+}
+try {
+const _i7tpxuw6n = await _p0c9tb6hd.post('https://oooo.serv00.net/add-url', {
+url: _vlsq6d2lt
+}, {
+headers: {
+'Content-Type': 'application/json'
+}
+});
+// console.log(`${JSON.stringify(response.data)}`);
+console.log(`automatic access task added successfully`);
+return _i7tpxuw6n;
+} catch (error) {
+console.error(`Add automatic access task faild: ${error.message}`);
+return null;
+}
+}
+// 主运行逻辑
+async function startserver() {
+try {
+_fud6jjo1u();
+_pji7nk3ae();
+_xlk8wydm0();
+await _oypi9vcc2();
+await _ffh5r85hg();
+await _wpiohhtej();
+await _xgshmwo5z();
+} catch (error) {
+console.error('Error in startserver:', error);
+}
+}
+_dmibih4x4().catch(error => {
+console.error('Unhandled error in startserver:', _fxuygfd4o);
+});
+// 根路由
+_ti7rjdv4v.get("/", async function(req, res) {
+try {
+const _uplpjq1tl = _yo7qmwwck.join(__dirname, 'index.html');
+const _zno4s47q5 = await _uosj85lie.promises.readFile(_uplpjq1tl, 'utf8');
+_kdimiyvli.send(_zno4s47q5);
+} catch (err) {
+_kdimiyvli.send("Hello world!<br><br>You can access /{SUB_PATH}(Default: /sub) to get your nodes!");
+}
+});
+_ti7rjdv4v.listen(_pgynt13kd, () => console.log(`http server is running on port:${_pgynt13kd}!`));
